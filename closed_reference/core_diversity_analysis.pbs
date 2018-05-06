@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+#Load modules
+module load eb
+module load Miniconda2
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# loading virtualenv
+source activate qiime1
+
+# core diversity analysis
+echo "core diversity analysis"
+core_diversity_analyses.py -i ~/1/2018_02_smb/SeqPrep_joined/slout_q20/picked_otus_default/otu_table.biom -o ~/1/2018_02_smb/SeqPrep_joined/slout_q20/picked_otus_default/core_output -m ~/1/2018_02_smb/map.tsv  -t ~/1/2018_02_smb/SeqPrep_joined/slout_q20/picked_otus_default/97_otus.tree -e 605
+
+source deactivate

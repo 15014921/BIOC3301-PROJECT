@@ -13,8 +13,8 @@ export TMPDIR=~/qiime_tmp
 # loading virtualenv
 source activate qiime1
 
-# join paired ends
-echo "joining paired ends"
-time join_paired_ends.py -b Index.fastq.gz -m SeqPrep -f Read1.fastq.gz -r Read2.fastq.gz -o SeqPrep_joined
+#Pick OTUs
+echo "Picking OTUs"
+pick_closed_reference_otus.py -i ~/1/2018_02_smb/SeqPrep_joined/slout_q20/seqs.fna -o ~/1/2018_02_smb/SeqPrep_joined/slout_q20/picked_otus_default -a -O 24
 
 source deactivate

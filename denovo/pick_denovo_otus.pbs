@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -t 6:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# loading virtualenv
+source activate qiime1
+
+# Pick de novo OTUs
+echo "Picking de novo OTUs"
+time pick_de_novo_otus.py -i ~/1/2018_02_smb/SeqPrep_joined/slout_q20/seqs.fna -o ~/1/2018_02_smb/SeqPrep_joined/slout_q20/picked_otus_denovo3
+
+source deactivate

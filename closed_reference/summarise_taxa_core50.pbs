@@ -13,8 +13,8 @@ export TMPDIR=~/qiime_tmp
 # loading virtualenv
 source activate qiime1
 
-# join paired ends
-echo "joining paired ends"
-time join_paired_ends.py -b Index.fastq.gz -m SeqPrep -f Read1.fastq.gz -r Read2.fastq.gz -o SeqPrep_joined
+# Summarize taxa command
+echo "summarising  taxa"
+summarize_taxa.py -i core_table_50.biom -o taxa_all_closed_summaries
 
 source deactivate

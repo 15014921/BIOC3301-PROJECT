@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+#Load modules
+module load eb
+module load Miniconda2
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# loading virtualenv
+source activate qiime1
+
+# Pick open ref OTUs
+echo "picking open reference OTUs"
+time pick_open_reference_otus.py -i ~/1/2018_02_smb/SeqPrep_joined/slout_q20/seqs.fna -o ~/1/2018_02_smb/SeqPrep_joined/slout_q20/ucrss2/ -s 0.01
+
+source deactivate

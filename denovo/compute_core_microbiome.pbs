@@ -13,8 +13,8 @@ export TMPDIR=~/qiime_tmp
 # loading virtualenv
 source activate qiime1
 
-# join paired ends
-echo "joining paired ends"
-time join_paired_ends.py -b Index.fastq.gz -m SeqPrep -f Read1.fastq.gz -r Read2.fastq.gz -o SeqPrep_joined
+# finding core microbiome
+echo "core microbiome"
+time compute_core_microbiome.py -i otu_table.biom -o otu_table_core_closed_microbiome
 
 source deactivate

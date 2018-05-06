@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+#Load modules
+module load eb
+module load Miniconda2
+module load R
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# loading virtualenv
+source activate qiime1
+
+# comparing L2 taxa
+echo "comparing L2 taxa"
+time compare_taxa_summaries.py -i ./picked_otus_default/otu_table_core_closed_microbiome/taxa_all_closed_summaries/core_table_50_L2.txt,./ucrss2/otu_table_core_microbiome/core50_all_taxa_summary/core_table_50_L2.txt -m paired -o taxa_comp_L2_open_closed_test
+
+source deactivate
