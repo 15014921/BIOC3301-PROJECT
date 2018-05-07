@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+#Load modules
+module load eb
+module load Miniconda2
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# loading virtualenv
+source activate qiime1
+
+# plotting rarefaction
+echo "plotting rarefaction"
+time make_rarefaction_plots.py -i alpha_div_collated/ -m ~/1/2018_02_smb/map.tsv -o rarefaction3 --ymax 80
+
+source deactivate
